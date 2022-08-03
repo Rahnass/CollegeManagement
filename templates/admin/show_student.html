@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+      <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('/static/images/d.jpg' ) ;
+    background-repeat: no-repeat;
+	background-size: cover;
+	height: auto;
+    background-attachment: fixed;
+        }
+
+
+.card{
+    margin-bottom:20px;
+    border:none;
+}
+table{
+    color: white;
+    margin: 5px 5px 5px 5px;
+    border-collapse:separate;
+    border-color: black;
+    border-spacing: 20px;
+    background-color: rgb(0, 0, 0);
+
+}
+
+
+.box {
+    width: 1100px;
+    padding: 40px;
+    position: absolute;
+    transition: 0.25s;
+    margin-top: 50px;
+}
+
+
+
+.box h1 {
+    background-color: white;
+    width: fit-content;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+
+      </style>
+    </head>
+
+    <body>
+        
+
+
+    <center> 
+
+        <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                <form method="post" class="box" >
+                    {% csrf_token %}
+                <h1>Student Details</h1>
+                <table border="1">
+                      <tr>
+                        <th>Student Name</th>
+                        <th>Student Address</th>
+                        <th>Student Age</th>
+                        <th>Joining date</th>
+                        <th>Course Name</th>
+                        <th>Course Fee</th>
+                      </tr>
+                      {% for stdcrs in stdcrs %}
+                      <tr>
+                        <td>{{ stdcrs.1 }}</td>
+                        <td>{{ stdcrs.2 }}</td>
+                        <td>{{ stdcrs.3 }}</td>
+                        <td>{{ stdcrs.4 }}</td>
+                        <td>{{ stdcrs.5 }}</td>
+                        <td>{{ stdcrs.6 }}</td>
+                      </tr>
+                      {% endfor %}
+                </table>
+               
+               
+                </form>
+            </div>
+            </div></div>
+    </div></center>
+    
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+      <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('/static/images/d.jpg' ) ;
+    background-repeat: no-repeat;
+	background-size: cover;
+	height: auto;
+    background-attachment: fixed;
+        }
+
+
+.card{
+    margin-bottom:20px;
+    border:none;
+}
+table{
+    color: white;
+    border-collapse: separate;
+    border-color: black;
+    border-spacing: 20px;
+    background-color: black;
+  
+
+}
+
+
+.box {
+    width: 1100px;
+    padding: 40px;
+    position: absolute;
+    transition: 0.25s;
+    margin-top: 50px;
+}
+
+
+
+.box h1 {
+    background-color: white;
+    width: fit-content;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+
+      </style>
+    </head>
+
+    <body>
+        
+
+
+    <center> 
+
+        <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                <form method="post" class="box" >
+                    {% csrf_token %}
+                <h1>Teachers Details</h1>
+                <table border="1">
+                      <tr>
+                        <th> ID</th>
+                        <th>Teacher_Name</th>
+                        <th> Address </th>
+                        <th> Gender</th>
+                        <th>course</th>
+                        <th>Contact_Number </th>
+                        <th>Email id</th>
+                        <th >Photo</th>
+                        
+                       
+    
+                      </tr>
+                      {% for teacher in UserMembers %}
+                      <tr>
+                        <td >{{ teacher.user.id }}</td>
+                        <td>{{ teacher.user.first_name }} {{ teacher.user.last_name }}</td>
+                        <td >{{ teacher.user_address }}</td>
+                        <td>{{ teacher.user_gender }}</td>
+                        <td>{{ teacher.user_course.course_name }}</td>
+                        <td>{{ teacher.user_contact }}</td>
+                        <td>{{ teacher.user.email }}</td>
+                        
+                        <td>
+                            {% if teacher.user_image %}
+                            <img src="{{ teacher.user_image.url }}" class="w-25">
+                            {% else %}
+                            <img src="/images/dp.png" class="w-25">
+                            {% endif %}
+                        </td>
+                      
+                        
+                        
+                        
+                      </tr>
+                      {% endfor %}
+                </table>
+               
+               
+                </form>
+            </div>
+            </div></div>
+    </div></center>
+    
+{% endblock %}

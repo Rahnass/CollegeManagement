@@ -1,0 +1,199 @@
+<html lang="en">
+    <head>
+        <title>
+            college
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('/static/images/staff.jpg' ) ;
+    background-repeat: no-repeat;
+	background-size: cover;
+	height: auto;
+    background-attachment: fixed;
+        }
+.card{
+    margin-bottom:20px;
+    border:none;
+}
+
+.box {
+    width: 700px;
+    padding: 40px;
+    position: absolute;
+    margin-left: 200px;
+    background: #000000;
+    ;
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 100px;
+    border-radius: 55px;
+}
+
+.box input[type="text"],
+.box input[type="password"],
+.box input[type="email"],
+.box input[type="number"] ,
+.box input[type="file"] {
+    border: 0;
+    background: none;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #bb3894;
+    padding: 10px 10px;
+    width: 500px;
+    outline: none;
+    color: rgb(255, 255, 255);
+    border-radius: 24px;
+    transition: 0.25s
+}
+
+.box h1 {
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus,
+.box input[type="email"]:focus ,
+.box input[type="number"]:focus {
+    width: 600px;
+    border-color: #54afbe
+}
+
+.box input[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #4397b1;
+    padding: 8px 40px;
+    outline: none;
+    color: rgb(255, 255, 255);
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+}
+
+.box input[type="submit"]:hover {
+    background: #33a3a3
+}
+
+.forgot {
+    text-decoration: none
+}
+.forgot:hover{
+    font-size: 18px;
+}
+input[type='radio'] {
+  width:15px;
+  height:15px;
+  border:1px solid rgb(255, 255, 255);
+  border-radius:50%;
+  color: rgb(255, 255, 255);
+  
+}
+.hi{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #bb3894;
+    padding: 10px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+}
+.hi:focus{
+    width: 300px;
+    border-color: #54afbe
+}
+a.nav-item{
+                margin-right: 15px;margin-left: 10px;
+                color: white;
+                text-transform: uppercase;
+            }
+          
+        
+
+      </style>
+   
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-md fixed-top  " style="background-color: #000000; opacity: 0.5; filter: alpha(opacity=50);">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon" style="color: white;">---</span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              
+                  <div class="navbar-nav">
+                    <h2 class="nav-item" style="color: white; margin-right: 800px;margin-left: 20px;">ABC College</h2>
+                    <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
+                    <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-item nav-link" href="{% url 'user_logout' %}">Logout</a>
+                  </div>
+           
+</div>
+        </nav><br><br><br><br><br>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                    <form action="{% url 'edit_profile' %}" method="post"  class="box" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <h1 >Edit Profile</h1>
+                    <hr style="border: 1px solid rgb(255, 255, 255);">
+                 
+                    <input type="text" style="width: 250px;" name="fname" value="{{ user.first_name }}" > 
+                    <input type="text" style="width: 250px;" name="lname" value="{{ user.last_name }}"><br>
+                    <input type="text" style="height:100px; width: 500px;" name="address" value="{{ umember.user_address }}"><br>
+                   <b> <label style="margin-right: 60px; color: rgb(255, 255, 255);  ">Gender :</label></b>
+                   <input type="radio" name="gender"  value="male" id="genmale" {% if umember.user_gender == 'male' %} checked {% else %} '' {% endif %}>
+                   <label for="genmale" style="color: white;">Male</label>
+                   <input type="radio" name="gender"  value="female" id="genfemale" {% if umember.user_gender == 'female' %} checked {% else %} '' {% endif %}>
+                   <label for="genfemale" style="color: white;">Female</label>
+                   <input type="radio" name="gender" value="others" id="genothers" {% if umember.user_gender == 'others' %} checked {% else %} '' {% endif %}>
+                   <label for="genothers" style="color: white;">Others</label>
+                   <h5 style="color: white;">Select Course : </h5>
+               
+
+                    <input type="number" name="contact" value="{{ umember.user_contact }}"><br>
+                    <h5 style="color: white;">User Image :</h5>
+                            
+                            <img src="{{ umember.user_image.url }}" class="w-25"><br>
+                            <input type="file" name="pic" class="form-control mt-3" accept="image/*" >
+                            
+                    <input type="email"  style="width: 250px;" name="mail" value="{{ user.email }}">
+                    <input type="submit" value="SAVE" >
+                    </form>
+                </div>
+                </div></div>
+        </div>
+
+
+      
+
+    </body></html>

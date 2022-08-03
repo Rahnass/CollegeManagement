@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block content %}
+      <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('/static/images/d.jpg' ) ;
+    background-repeat: no-repeat;
+	background-size: cover;
+	height: auto;
+    background-attachment: fixed;
+        }
+
+
+.card{
+    margin-bottom:20px;
+    border:none;
+}
+
+.box {
+    width: 430px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    background: #191919;
+    ;
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 100px;
+    border-radius: 55px;
+}
+
+.hi {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #bb3894;
+    padding: 10px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+}
+
+.box h1 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.hi:focus{
+    width: 300px;
+    border-color: #54afbe
+}
+
+.login {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #4397b1;
+    padding: 8px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+}
+.login:hover {
+    background: #33a3a3
+}
+
+      </style>
+    </head>
+
+    <body>
+        <center> <div class="col-md-4">
+            {% for message in messages %}
+            <h5>
+                <div class="alert alert-info mt-5">
+                    {{ message }}
+                </div>
+            </h5>
+                {% endfor %}
+        </div>
+    </center> 
+
+
+        <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                <form method="post" class="box" action="{% url 'add_student' %}">
+                    {% csrf_token %}
+                <h1>Add Student</h1>
+               
+                <input class="hi" type="text" name="stdname" placeholder="Student Name"> 
+                <input class="hi" type="text" name="stdaddress" placeholder="Address"> 
+                <input class="hi" type="number" name="stdage" placeholder="Age"> 
+                <input class="hi" type="date" name="joindate" placeholder="Join date"> 
+                <select class="hi" class="form-control" name="sel">
+                    {% for course in courses %}
+                    <option style="background-color: black; color: white;"  value="{{ course.id }}">{{ course.course_name }}</option>
+                    {% endfor %}
+                </select>
+                <input class="login" type="submit" name="" value="ADD" href="#"> 
+            
+                </form>
+            </div>
+            </div></div>
+    </div>
+    
+{% endblock %}
+

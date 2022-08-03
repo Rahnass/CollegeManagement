@@ -1,0 +1,177 @@
+<html lang="en">
+    <head>
+        <title>
+            college
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('/static/images/staff.jpg' ) ;
+    background-repeat: no-repeat;
+	background-size: cover;
+	height: auto;
+    background-attachment: fixed;
+        }
+
+input[type="submit"] {
+    border: 0;
+    background: none;
+    margin: 20px auto;
+    text-align: center;
+    padding: 8px 40px;
+    border: 2px solid rgb(216, 100, 100);
+    outline: none;
+    color: rgb(0, 0, 0);
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+}
+
+input[type="submit"]:hover {
+    background:rgb(245, 114, 114);
+}
+a.nav-item{
+                margin-right: 15px;margin-left: 10px;
+                color: white;
+                text-transform: uppercase;
+            }
+           
+.card {
+    border-radius: 5px;
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    border: none;
+    margin-bottom: 30px;
+}
+
+.m-r-0 {
+    margin-right: 0px;
+}
+
+.m-l-0 {
+    margin-left: 0px;
+}
+
+
+.bg-c-lite-green {
+        background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
+    background: linear-gradient(to right, #ee5a6f, #f29263);
+}
+h6 {
+    font-size: 14px;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+        </style>  
+    </head>
+        <body>
+            <nav class="navbar navbar-expand-md fixed-top  " style="background-color: #000000; opacity: 0.5; filter: alpha(opacity=50);">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon" style="color: white;">---</span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                  
+                      <div class="navbar-nav">
+                        <h2 class="nav-item" style="color: white; margin-right: 800px;margin-left: 20px;">ABC College</h2>
+                        <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
+                        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                        <a class="nav-item nav-link" href="{% url 'user_logout' %}">Logout</a>
+                      </div>
+               
+    </div>
+            </nav><br><br><br><br><br>
+<center>
+            <div class="page-content page-container" id="page-content">
+                <div class="padding">
+                    <div class="row container d-flex justify-content-center">
+            <div class="col-xl-6 col-md-12">
+                <div class="card user-card-full">
+                   <div class="row m-l-0 m-r-0">
+                     <div class="col-sm-12 bg-c-lite-green user-profile">
+                         <div class="card-block text-center text-white">
+                            <form action="{% url 'edit_page' %}" method="post"   enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% for a in user %}
+                          <div>
+                                {% if a.user_image %}
+                                <img src="{{ a.user_image.url }}"  style="margin-bottom: 25px; width: 80px;">
+                                {% else %}
+                                <img src="/images/dp.png" style="margin-bottom: 25px; width: 80px;">
+                                {% endif %}
+                         
+                             </div>
+                            <h5 class="f-w-600">{{ a.user.first_name }} {{a.user.last_name }}</h5>
+                            <h6>{{ a.user_address }}</h6>
+                             </div>
+                         </div>
+                             <div class="col-sm-12">
+                                 <div class="card-block">
+                               <h5 class="m-b-20 p-b-5 b-b-default f-w-600">PROFILE</h5>
+                             <div class="row">
+                               <div class="col-sm-6">
+                           <p class="m-b-10 f-w-600">Gender</p>
+                        <h6 class="text-muted f-w-400">{{ a.user_gender }}</h6>
+                            </div>
+                             <div class="col-sm-6">
+                            <p class="m-b-10 f-w-600">Course</p>
+                            <h6 class="text-muted f-w-400">{{ a.user_course.course_name }}</h6></div></div><br>
+                              <div class="row">
+                                 <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Email</p>
+                                    <h6 class="text-muted f-w-400">{{ a.user.email }}</h6>
+                                           </div>
+                                         <div class="col-sm-6">
+                                         <p class="m-b-10 f-w-600">Phone</p>
+                                           <h6 class="text-muted f-w-400">{{ a.user_contact }}</h6></div></div>
+                                           </div></div></div>{% endfor %}
+                                           <input style="margin-left: 200px;" type="submit" name="" value="EDIT " > </form></div></div></div></div></div></div></div>
+                                        </center>
+        </body>
+</html>

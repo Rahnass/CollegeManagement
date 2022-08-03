@@ -116,7 +116,8 @@ def edit_profile(request):
         return redirect('profile')
    
 
-
+def third(request):
+    return render(request,'third.html')
 
 def show_details(request):
     cursor=connection.cursor()
